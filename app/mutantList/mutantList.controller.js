@@ -9,6 +9,7 @@
 
   function MutantListController(mutantService, user) {
     var vm = this;
+
     vm.mutants = mutantService.mutantsByUser(user.uid);
 
   }

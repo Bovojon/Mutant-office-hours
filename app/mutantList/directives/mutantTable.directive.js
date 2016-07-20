@@ -3,31 +3,31 @@
 
   angular
     .module('mutantApp.mutantList')
-    .directive('xtMutants', xtMutants);
+    .directive('xtMutantTable', xtMutantTable);
 
-  function xtMutants() {
+  function xtMutantTable() {
     return {
-      templateUrl: 'app/mutantList/directives/mutantsTable.html',
+      templateUrl: 'app/mutantList/directives/mutantTable.html',
       restrict: 'E',
-      controller: MutantsTableController,
+      controller: MutantTableController,
       controllerAs: 'vm',
-      bindToController: true,     // Instead of injecting $scope use this
       scope: {
-        mutants: '='    // = means two-way binding
+        mutants: '=',
       },
+      bindToController: true,
     };
   }
 
-  MutantsTableController.$inject = ['textMessageService'];
+  MutantTableController.$inject = ['textMessageService'];
 
-  function MutantsTableController(textMessageService) {
+  function MutantTableController(textMessageService) {
     var vm = this;
+
     vm.deleteMutant = deleteMutant;
     vm.toggleComplete = toggleComplete;
     vm.sendText = sendText;
 
     function deleteMutant(mutant) {
-      console.log(mutant);
       vm.mutants.$remove(mutant);
     }
 
@@ -38,6 +38,5 @@
     function sendText(mutant) {
       textMessageService.sendText(mutant, vm.mutants);
     }
-
   }
 })();

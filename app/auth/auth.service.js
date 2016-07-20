@@ -40,11 +40,10 @@
       return auth.$getAuth();
     }
 
-    function sendWelcomeEmail(emailAddress){
+    function sendWelcomeEmail(emailAddress) {
       firebaseDataService.emails.push({
-        emailAdress: emailAddress
+        emailAddress: emailAddress
       });
     }
-
   }
 })();
